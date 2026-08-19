@@ -1,6 +1,7 @@
 {
-  "showPercentage": 0,
+  "showPercentage": 10,
   "packageNames": [
-    "io.apptune.controls"
+    "io.apptune.controls",
+    "app.pdfconverter.android"
   ]
 }
