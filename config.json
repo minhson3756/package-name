@@ -1,5 +1,6 @@
 {
   "packageNames": [
-    "app.pdfconverter.android"
+    "app.pdfconverter.android",
+    "io.apptune.controls"
   ]
 }
