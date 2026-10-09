@@ -1,6 +1,6 @@
 {
   "packageNames": [
     "app.pdfconverter.android",
-    "io.apptune.controls"
+    "io.apptune.controls", "com.dailymood.tracker.diary"
   ]
 }
