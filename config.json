@@ -1,6 +1,6 @@
 {
   "packageNames": [
     "app.pdfconverter.android",
-    "com.xnetheron.qrscanner"
+    "com.xnetheron.qrscanner","com.dailymood.tracker.diary"
   ]
 }
