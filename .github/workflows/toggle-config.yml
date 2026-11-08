@@ -1,0 +1,46 @@
+name: Toggle config.json
+
+on:
+  schedule:
+    # Chạy mỗi giờ (phút 01). Script tự quyết định giá trị 1 hay 2 theo giờ VN.
+    - cron: "1 * * * *"
+  workflow_dispatch:
+    inputs:
+      value:
+        description: "Ép giá trị (để trống = theo lịch)"
+        required: false
+        default: ""
+        type: choice
+        options: ["", "1", "2"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: toggle-config
+  cancel-in-progress: false
+
+jobs:
+  toggle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Update config.json
+        run: node .github/scripts/toggle-config.mjs ${{ inputs.value }}
+
+      - name: Commit & push if changed
+        run: |
+          if git diff --quiet -- config.json; then
+            echo "Không có thay đổi."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898699+github-actions[bot]@users.noreply.github.com"
+          git add config.json
+          git commit -m "Update config.json"
+          git push
