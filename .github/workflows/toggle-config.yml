@@ -2,8 +2,9 @@ name: Toggle config.json
 
 on:
   schedule:
-    # Chạy mỗi giờ (phút 01). Script tự quyết định giá trị 1 hay 2 theo giờ VN.
-    - cron: "1 * * * *"
+    # Chạy 4 lần/giờ, tránh phút 00 (GitHub hay bỏ lượt chạy đầu giờ vì quá tải).
+    # Script tự quyết định giá trị 1 hay 2 theo giờ VN, chỉ commit khi cần đổi.
+    - cron: "7,22,37,52 * * * *"
   workflow_dispatch:
     inputs:
       value:
