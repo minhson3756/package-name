@@ -1,4 +1,6 @@
 {
   "packageNames": [
+    "app.pdfconverter.android",
+    "com.xnetheron.qrscanner"
   ]
 }
